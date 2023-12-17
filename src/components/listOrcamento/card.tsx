@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { Checkbox, Typography } from '@mui/material';
 import { elementType } from './types';
 import ModalUpdate from './modalUpdate';
-import { formatoMonetario } from './uteis';
+import { formatoMonetario } from '../uteis';
 import { useAppDispatch } from '../../redux/hooks';
 import { setCheckBox } from '../../redux/reducers/checkBoxReducer';
 import { setCheckBox2 } from '../../redux/reducers/checkBoxReducer2';

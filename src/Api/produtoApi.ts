@@ -33,6 +33,15 @@ export const atualizarProdutoApi = (id:string, nome:string, valor:number, loja:s
     .then(r=>r.json()) 
 }
 
+export const atualizarSelecionadoProdutoApi = (id:string, selecionado:boolean)=>{
+    return fetch(link+"produto/selecionar",{
+        headers:headers,
+        method:"put",
+        body:JSON.stringify({id,selecionado})
+    })
+    .then(r=>r.json()) 
+}
+
 export const deletarProdutoApi = (id:string)=>{
     return fetch(link+"produto/deletar",{
         headers:headers,

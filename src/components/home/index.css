@@ -1,7 +1,25 @@
 .listaDeProdutos{
-    display: flex;  
+    display: flex;
+    max-width: 100vw;
+    overflow-x: scroll;  
+}
+.homeContainer{
+    padding: 1%;
+}
+.listaDeProdutos::-webkit-scrollbar{
+  height: 10px;
+}
+.listaDeProdutos::-webkit-scrollbar-thumb:horizontal{
+    background-color: aliceblue;
+    border-radius: 30px;
 }
 .textField{
     margin: 80px;
    
+}
+
+@media (max-width:700px) {
+    .homeContainer{
+        padding: 4%;
+    }
 }

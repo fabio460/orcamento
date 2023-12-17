@@ -29,6 +29,7 @@ export type produtoType = {
     marca? :string
     endeerecoDaLoja? :string
     idDoOrcamento? :string 
+    selecionado? :boolean
 }
 
 export type routerType={

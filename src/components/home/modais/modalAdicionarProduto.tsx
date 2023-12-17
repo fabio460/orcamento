@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import { IconButton, TextField } from '@mui/material';
 import { criarProdutoApi } from '../../../Api/produtoApi';
+import IconeCarregando from '../../iconeCarregando';
 export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:string, atualizar:boolean, setAtualizar:any}) {
   const [open, setOpen] = React.useState(false);
   const [Nome, setNome] = useState<string>("")
@@ -15,6 +16,8 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:
   const [Endereco, setEndereco] = useState<string>("")
   const [Loja, setLoja] = useState<string>("")
   const [Marca, setMarca] = useState<string>("")
+  const [loading, setLoading] = useState(false)
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -24,9 +27,11 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:
   };
 
   const adicionar = async()=>{
-     criarProdutoApi(Nome, Valor, Loja, Marca, Endereco, id)
-     setAtualizar(!atualizar)
-     handleClose()
+    setLoading(true)
+    await criarProdutoApi(Nome, Valor, Loja, Marca, Endereco, id)
+    setAtualizar(!atualizar)
+    setLoading(false)
+    handleClose()
   }
   return (
     <React.Fragment>
@@ -50,7 +55,7 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={adicionar}>Adicionar</Button>
+          <Button disabled={loading && true} onClick={adicionar}>{loading?<IconeCarregando tam={20}/>:"Atualizar"}</Button>
           <Button onClick={handleClose} autoFocus>
             cancelar
           </Button>

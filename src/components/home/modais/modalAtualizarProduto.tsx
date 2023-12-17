@@ -18,6 +18,8 @@ export default function ModalAtualizarProduto(
   const [Endereco, setEndereco] = useState<string>(endeerecoDaLoja as string)
   const [Loja, setLoja] = useState<string>(loja as string)
   const [Marca, setMarca] = useState(marca as string)
+  const [loading, setLoading] = useState(false)
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -27,9 +29,11 @@ export default function ModalAtualizarProduto(
   };
    
   const confirm = async()=>{
-     atualizarProdutoApi(id, Nome, Valor, Loja, Marca, Endereco, idDoOrcamento)
-     setAtualizar(!atualizar)
-     handleClose()
+    setLoading(true)
+    await atualizarProdutoApi(id, Nome, Valor, Loja, Marca, Endereco, idDoOrcamento)
+    setAtualizar(!atualizar)
+    setLoading(false)
+    handleClose()
   }
   
   return (
@@ -96,7 +100,11 @@ export default function ModalAtualizarProduto(
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={confirm}>confirmar</Button>
+          {
+            loading?
+            <Button>carregando</Button>:
+            <Button onClick={confirm}>confirmar</Button>
+          }
           <Button onClick={handleClose} autoFocus>
             cancelar
           </Button>

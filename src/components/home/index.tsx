@@ -8,7 +8,8 @@ import { listarPorIdUsuarioApi } from '../../Api/usuarioApi'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import ModalAdicionarProduto from './modais/modalAdicionarProduto'
-import { getTotal } from '../listOrcamento/uteis'
+import { getTotal } from '../uteis'
+import ModalCriarOrcamento from './modais/modalCriarOrcamento'
 
 const darkTheme = createTheme({
   palette: {
@@ -38,20 +39,23 @@ export default function Home() {
     localStorage.removeItem("token")
     window.location.reload()
   }
+
+
   if (loading) {
     return <div>carregando ...</div>
   } else {    
     return (
       <ThemeProvider theme={dark ? darkTheme:{}}>
         <CssBaseline />
-        <div>
+        <div className='homeContainer'>
           bem vindo {usuario?.nome}
           <Button onClick={deslogar}>sair</Button>
           <Button onClick={handleDarkMode}>dark</Button>
+          <ModalCriarOrcamento idDoUsuario={usuario?.id as string} setAtualizar={setAtualizar} atualizar={atualizar}/>
           {
             usuario?.orcamento?.map((e, key)=>{
               return <div key={key} >
-                <h4>{e.nome + getTotal(e.produto)}</h4>
+                <h4>{e.nome} - {getTotal(e.produto)}</h4>
                 <div className='listaDeProdutos'>
                   {
                     e.produto.map((p, keyP)=>{
@@ -64,7 +68,8 @@ export default function Home() {
                             valor={p.valor as number} 
                             endeerecoDaLoja={p.endeerecoDaLoja as string} 
                             setAtualizar={setAtualizar} atualizar={atualizar}
-                            idDoOrcamento={p.idDoOrcamento as string}  
+                            idDoOrcamento={p.idDoOrcamento as string}
+                            selecionado={p?.selecionado as boolean}  
                           />
                       </div>
                     })
