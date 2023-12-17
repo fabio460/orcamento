@@ -35,7 +35,7 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:
   }
   return (
     <React.Fragment>
-      <IconButton onClick={handleClickOpen} sx={{margin:"auto 1px"}}><ControlPointIcon/></IconButton>
+      <IconButton onClick={handleClickOpen} ><ControlPointIcon/></IconButton>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -55,8 +55,8 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button disabled={loading && true} onClick={adicionar}>{loading?<IconeCarregando tam={20}/>:"Atualizar"}</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button color='success' variant='contained' disabled={loading && true} onClick={adicionar}>{loading?<IconeCarregando tam={20}/>:"Atualizar"}</Button>
+          <Button color='error' variant='contained' onClick={handleClose} autoFocus>
             cancelar
           </Button>
         </DialogActions>

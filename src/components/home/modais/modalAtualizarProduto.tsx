@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { atualizarProdutoApi } from '../../../Api/produtoApi';
+import IconeCarregando from '../../iconeCarregando';
 
 
 export default function ModalAtualizarProduto(
@@ -100,12 +101,10 @@ export default function ModalAtualizarProduto(
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {
-            loading?
-            <Button>carregando</Button>:
-            <Button onClick={confirm}>confirmar</Button>
-          }
-          <Button onClick={handleClose} autoFocus>
+          <Button color='success' variant='contained' disabled={loading && true} onClick={confirm}>
+            {loading? <div style={{margin:"0px 25px"}}><IconeCarregando tam={20}/></div> :"Confirmar"}
+          </Button>
+          <Button color='error' variant='contained' onClick={handleClose} autoFocus>
             cancelar
           </Button>
         </DialogActions>

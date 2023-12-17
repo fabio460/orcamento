@@ -4,7 +4,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ModalAtualizarProduto from './modais/modalAtualizarProduto';
-import { formatoMonetario } from '../uteis';
+import { dataFormatada, formatoMonetario } from '../uteis';
 import { Checkbox } from '@mui/material';
 import { atualizarProdutoApi, atualizarSelecionadoProdutoApi } from '../../Api/produtoApi';
 import IconeCarregando from '../iconeCarregando';
@@ -12,8 +12,8 @@ import ModalDeletarProduto from './modais/modalDeletarProduto';
 
 
 export default function CardProduto(
-  {id,nome, loja, marca, valor, idDoOrcamento, endeerecoDaLoja, atualizar, setAtualizar, selecionado}
-   :{id:string,nome:string, loja:string, valor:number, marca:string, idDoOrcamento:string, endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean, selecionado:boolean}) {
+  {id,nome, loja, marca, dataDoPreco,valor, idDoOrcamento, endeerecoDaLoja, atualizar, setAtualizar, selecionado}
+   :{id:string,nome:string, loja:string, valor:number, marca:string, dataDoPreco:string,idDoOrcamento:string, endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean, selecionado:boolean}) {
   const [loading, setLoading] = React.useState(false)
   
   const handleChecked = async(e:any)=>{
@@ -43,6 +43,9 @@ export default function CardProduto(
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {loja}
+        </Typography>
+        <Typography sx={{ fontSize: 11 }} color="text.secondary" gutterBottom>
+          {dataFormatada(dataDoPreco)}
         </Typography>
         <Typography variant="h5" component="div">
         </Typography>

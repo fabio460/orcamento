@@ -10,6 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import ModalAdicionarProduto from './modais/modalAdicionarProduto'
 import { getTotal } from '../uteis'
 import ModalCriarOrcamento from './modais/modalCriarOrcamento'
+import ModalDeletarOrcamento from './modais/modalDeletarOrcamento'
 
 const darkTheme = createTheme({
   palette: {
@@ -70,11 +71,15 @@ export default function Home() {
                             setAtualizar={setAtualizar} atualizar={atualizar}
                             idDoOrcamento={p.idDoOrcamento as string}
                             selecionado={p?.selecionado as boolean}  
+                            dataDoPreco={p.dataDoPreco as string}
                           />
                       </div>
                     })
                   }
-                  <ModalAdicionarProduto id={e.id} setAtualizar={setAtualizar} atualizar={atualizar}/>
+                  <div style={{display:"flex", flexDirection:"column", justifyContent:"center"}}>            
+                    <ModalAdicionarProduto id={e.id} setAtualizar={setAtualizar} atualizar={atualizar}/>
+                    <ModalDeletarOrcamento id={e.id} nome={e.nome} setAtualizar={setAtualizar} atualizar={atualizar}/>
+                  </div>
                 </div>
               </div>
             })
