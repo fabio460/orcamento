@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import {getUsuarioAutenticadoApi } from '../../Api/authApi'
 import {usuarioType} from '../../types'
-import {Button} from '@mui/material'
+import {Button, IconButton} from '@mui/material'
 import CardProduto from './cardProduto'
 import "./index.css"
 import { listarPorIdUsuarioApi } from '../../Api/usuarioApi'
@@ -11,7 +11,9 @@ import ModalAdicionarProduto from './modais/modalAdicionarProduto'
 import { getTotal } from '../uteis'
 import ModalCriarOrcamento from './modais/modalCriarOrcamento'
 import ModalDeletarOrcamento from './modais/modalDeletarOrcamento'
-
+import Brightness3Icon from '@mui/icons-material/Brightness3';
+import BedtimeIcon from '@mui/icons-material/Bedtime';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -51,7 +53,9 @@ export default function Home() {
         <div className='homeContainer'>
           bem vindo {usuario?.nome}
           <Button onClick={deslogar}>sair</Button>
-          <Button onClick={handleDarkMode}>dark</Button>
+          <IconButton onClick={handleDarkMode}>{
+            dark ? <BedtimeIcon/>:<WbSunnyIcon/>
+          }</IconButton>
           <ModalCriarOrcamento idDoUsuario={usuario?.id as string} setAtualizar={setAtualizar} atualizar={atualizar}/>
           {
             usuario?.orcamento?.map((e, key)=>{

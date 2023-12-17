@@ -50,7 +50,7 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar}:{id:
                 <TextField fullWidth sx={{mb:2}} size='small' label="Nome" onChange={e=>setNome(e.target.value)}/>
                 <TextField fullWidth sx={{mb:2}} size='small' label="Marca" onChange={e=>setMarca(e.target.value)}/>
                 <TextField fullWidth sx={{mb:2}} size='small' label="Endereço" onChange={e=>setEndereco(e.target.value)}/>
-                <TextField fullWidth sx={{mb:2}} size='small' label="Loja" onChange={e=>setLoja(e.target.value)}/>
+                <TextField fullWidth sx={{mb:2}} size='small' label="Loja ou Site" onChange={e=>setLoja(e.target.value)}/>
                 <TextField fullWidth sx={{mb:2}} size='small' label="Valor" onChange={e=>setValor(parseFloat(e.target.value))}/>
           </DialogContentText>
         </DialogContent>
