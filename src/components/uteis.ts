@@ -31,5 +31,9 @@ export const getMaisCaro = (orc:orcamentoType[])=>{
      return a.soma > b.soma ? -1 : a.soma < b.soma ? 1 : 0
    })
    const menor = res?.reverse()
-   return menor[0].id
+   if (arr) {
+      return menor[0]?.id 
+   } else {
+      return ""      
+   }
 }
