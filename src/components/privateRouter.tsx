@@ -18,7 +18,7 @@ export default   function PriveteRouter({children}:{children:ReactNode}) {
     },[])
 
     if (loading) {
-        return <div>autenticando...</div>
+        return <h3 style={{textAlign:"center", marginTop:"20%"}}>Autenticando...</h3>
     } else {
         if (autenticate) {
             return <div>{children}</div>            

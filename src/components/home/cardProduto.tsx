@@ -25,7 +25,7 @@ export default function CardProduto(
     }, 700);
   }  
   return (
-    <Card sx={{ minWidth: 175, m:1 }}>
+    <Card sx={{ width: 175, m:1, minHeight:300 }}>
       <div style={{display:"flex", justifyContent:"space-between"}}>
         {
           loading ? 
@@ -34,37 +34,40 @@ export default function CardProduto(
         }
         <ModalDeletarProduto id={id} nome={nome} atualizar={atualizar} setAtualizar={setAtualizar}/>
       </div>
-      <CardContent>
-        <Typography variant="body2">
-          {nome}
-        </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {marca}
-        </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {loja}
-        </Typography>
-        <Typography sx={{ fontSize: 11 }} color="text.secondary" gutterBottom>
-          {dataFormatada(dataDoPreco)}
-        </Typography>
-        <Typography variant="h5" component="div">
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {formatoMonetario(valor)}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <ModalAtualizarProduto
-          nome={nome}
-          loja={loja} 
-          marca={marca} 
-          valor={valor} 
-          idDoOrcamento={idDoOrcamento}
-          endeerecoDaLoja={endeerecoDaLoja}
-          setAtualizar={setAtualizar} atualizar={atualizar as boolean}
-          id={id}
-        />
-      </CardActions>
+      <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"250px"}}>
+
+        <CardContent>
+          <Typography variant="body2">
+            {nome}
+          </Typography>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {marca}
+          </Typography>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {loja}
+          </Typography>
+          <Typography sx={{ fontSize: 11 }} color="text.secondary" gutterBottom>
+            {dataFormatada(dataDoPreco)}
+          </Typography>
+          <Typography variant="h5" component="div">
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            {formatoMonetario(valor)}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{pt:"auto"}}>
+          <ModalAtualizarProduto
+            nome={nome}
+            loja={loja} 
+            marca={marca} 
+            valor={valor} 
+            idDoOrcamento={idDoOrcamento}
+            endeerecoDaLoja={endeerecoDaLoja}
+            setAtualizar={setAtualizar} atualizar={atualizar as boolean}
+            id={id}
+          />
+        </CardActions>
+      </div>
     </Card>
   );
 }

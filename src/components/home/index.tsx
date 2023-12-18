@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {getUsuarioAutenticadoApi } from '../../Api/authApi'
-import {usuarioType} from '../../types'
+import {orcamentoType, usuarioType} from '../../types'
 import {Button, IconButton} from '@mui/material'
 import CardProduto from './cardProduto'
 import "./index.css"
@@ -8,12 +8,14 @@ import { listarPorIdUsuarioApi } from '../../Api/usuarioApi'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import ModalAdicionarProduto from './modais/modalAdicionarProduto'
-import { getTotal } from '../uteis'
+import { getMaisCaro, getTotal } from '../uteis'
 import ModalCriarOrcamento from './modais/modalCriarOrcamento'
 import ModalDeletarOrcamento from './modais/modalDeletarOrcamento'
-import Brightness3Icon from '@mui/icons-material/Brightness3';
-import BedtimeIcon from '@mui/icons-material/Bedtime';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';import BedtimeIcon from '@mui/icons-material/Bedtime';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import IconeCarregando from '../iconeCarregando'
+import ModalAtualizaOrcamento from './modais/modalAtualizarOrcamento'
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -25,6 +27,9 @@ export default function Home() {
   const [usuario, setusuario] = useState<usuarioType>()
   const [dark, setDark] = useState<any>(localStorage.getItem("dark") === "true" ? true:false)
   const [atualizar, setAtualizar] = useState(false)
+  
+  let idDoMaisBarato = getMaisCaro(usuario?.orcamento as orcamentoType[]) 
+
   async function getUsuario() {
     const r = await getUsuarioAutenticadoApi(localStorage.getItem("token") as string)
     const u = await listarPorIdUsuarioApi(r.user.id)
@@ -45,7 +50,12 @@ export default function Home() {
 
 
   if (loading) {
-    return <div>carregando ...</div>
+    return <ThemeProvider theme={dark ? darkTheme:{}}>
+      <CssBaseline />
+      <div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"100vh"}}>
+        <IconeCarregando tam={60}/>
+      </div>
+    </ThemeProvider>
   } else {    
     return (
       <ThemeProvider theme={dark ? darkTheme:{}}>
@@ -60,7 +70,12 @@ export default function Home() {
           {
             usuario?.orcamento?.map((e, key)=>{
               return <div key={key} >
-                <h4>{e.nome} - {getTotal(e.produto)}</h4>
+                <Stack direction="row" spacing={1} sx={{display:"flex", flexWrap:"wrap", width:"80vw"}}>
+                  <Chip label={e.nome} />
+                  <Chip label={getTotal(e.produto)} variant="outlined" />
+                  <ModalAtualizaOrcamento id={e.id} idDoUsuario={e.idDoUsuario} nome={e.nome} setAtualizar={setAtualizar} atualizar={atualizar}/>
+                  {e.id === idDoMaisBarato && <Chip label={"Mais barato"} variant="filled" color='success' />}
+                </Stack>
                 <div className='listaDeProdutos'>
                   {
                     e.produto.map((p, keyP)=>{
