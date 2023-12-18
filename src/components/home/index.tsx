@@ -71,10 +71,10 @@ export default function Home() {
             usuario?.orcamento?.map((e, key)=>{
               return <div key={key} >
                 <Stack direction="row" spacing={1} sx={{display:"flex", flexWrap:"wrap", width:"80vw"}}>
-                  <Chip label={e.nome} />
-                  <Chip label={getTotal(e.produto)} variant="outlined" />
+                  <Chip sx={{margin:4}} label={e.nome} />
+                  <Chip sx={{margin:4}} label={getTotal(e.produto)} variant="outlined" />
                   <ModalAtualizaOrcamento id={e.id} idDoUsuario={e.idDoUsuario} nome={e.nome} setAtualizar={setAtualizar} atualizar={atualizar}/>
-                  {e.id === idDoMaisBarato && <Chip label={"Mais barato"} variant="filled" color='success' />}
+                  {e.id === idDoMaisBarato && <Chip sx={{margin:4}} label={"Mais barato"} variant="filled" color='success' />}
                 </Stack>
                 <div className='listaDeProdutos'>
                   {
