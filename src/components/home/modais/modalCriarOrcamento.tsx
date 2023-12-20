@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { TextField } from '@mui/material';
+import { ListItemText, TextField } from '@mui/material';
 import { criarOrcamentoApi } from '../../../Api/orcamentoApi';
 export default function ModalCriarOrcamento({idDoUsuario, atualizar, setAtualizar}:{idDoUsuario:string, atualizar:boolean, setAtualizar:any}) {
   const [open, setOpen] = React.useState(false);
@@ -28,7 +28,7 @@ export default function ModalCriarOrcamento({idDoUsuario, atualizar, setAtualiza
   }
   return (
     <React.Fragment>
-      <Button onClick={handleClickOpen} sx={{margin:"auto 1px"}}>Criar orçamneto</Button>
+      <ListItemText onClick={handleClickOpen} sx={{margin:"auto 1px"}}>Criar orçamneto</ListItemText>
       <Dialog
         open={open}
         onClose={handleClose}

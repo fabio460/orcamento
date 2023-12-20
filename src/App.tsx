@@ -6,7 +6,7 @@ import PriveteRouter from './components/privateRouter';
 import Login from './components/Login/login';
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
        <Routes>
           <Route path='/' element={<PriveteRouter><Home/></PriveteRouter>}/>
           <Route path='/login' element={<Login/>}/>
