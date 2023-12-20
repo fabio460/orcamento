@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { atualizarProdutoApi } from '../../../Api/produtoApi';
 import IconeCarregando from '../../iconeCarregando';
+import { trocaVirgulaPorPonto } from '../../uteis';
 
 
 export default function ModalAtualizarProduto(
@@ -15,11 +16,12 @@ export default function ModalAtualizarProduto(
    :{id:string ,nome:string, loja:string, valor:number, marca:string, idDoOrcamento:string, endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean}) {
   const [open, setOpen] = React.useState(false);
   const [Nome, setNome] = useState<string>(nome as string)
-  const [Valor, setValor] = useState<number>(valor as number)
+  const [Valor, setValor] = useState<string>(valor.toString())
   const [Endereco, setEndereco] = useState<string>(endeerecoDaLoja as string)
   const [Loja, setLoja] = useState<string>(loja as string)
   const [Marca, setMarca] = useState(marca as string)
   const [loading, setLoading] = useState(false)
+  const [nomeError, setNomeError] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,11 +29,17 @@ export default function ModalAtualizarProduto(
 
   const handleClose = () => {
     setOpen(false);
+    setNomeError(false)
   };
    
   const confirm = async()=>{
+    if (Nome === "".trim()) {
+      setNomeError(true)
+      return null
+    }
+    setNomeError(false)
     setLoading(true)
-    await atualizarProdutoApi(id, Nome, Valor, Loja, Marca, Endereco, idDoOrcamento)
+    await atualizarProdutoApi(id, Nome, trocaVirgulaPorPonto(Valor), Loja, Marca, Endereco, idDoOrcamento)
     setAtualizar(!atualizar)
     setLoading(false)
     handleClose()
@@ -54,9 +62,10 @@ export default function ModalAtualizarProduto(
         <DialogContent>
           <DialogContentText id="alert-dialog-description" sx={{p:1}} component={"div"}>
             <TextField 
-               label="Nome do produto" 
+               label={nomeError ? "Produto inválido" : "Nome do produto" }
                variant="outlined"
                size='small'
+               error={nomeError}
                fullWidth
                defaultValue={nome}
                onChange={e=> setNome(e.target.value)}
@@ -95,7 +104,7 @@ export default function ModalAtualizarProduto(
                size='small'
                fullWidth
                defaultValue={valor}
-               onChange={e=> setValor(parseFloat(e.target.value))}
+               onChange={e=> setValor(e.target.value)}
                sx={{mb:1}}
              />
           </DialogContentText>

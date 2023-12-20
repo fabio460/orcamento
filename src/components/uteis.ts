@@ -37,3 +37,32 @@ export const getMaisCaro = (orc:orcamentoType[])=>{
       return ""      
    }
 }
+
+export const trocaVirgulaPorPonto = (valor:string)=>{
+   const str = valor.toString()
+   const  strComPonto = str.replace(",",".")
+   return parseFloat(strComPonto)
+}
+
+export const emailValido = (email:string)=>{
+    const regEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const emailValido = regEmail.test(email);
+    return emailValido;
+}
+
+export const senhaValida = (senha:string)=>{
+    const regSenha = /^[a-zA-Z0-9]{5}/;
+    const senhaValida = regSenha.test(senha)
+    return senhaValida;
+}
+
+export const nomeValido = (nome:string)=>{
+    const regNome = /^[a-zA-Z]{3}/
+    const nomeValido = regNome.test(nome)
+    return nomeValido;
+}
+
+
+export const ignoreMaiusMinusAcent = (nome:string)=>{
+   return nome.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+}

@@ -1,6 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import updateReducer from './reducers/updateReducer'
-import productSelected from './reducers/productSelected'
 import checkBoxReducer from './reducers/checkBoxReducer'
 import checkBoxReducer2 from './reducers/checkBoxReducer2'
 import checkBoxReducer3 from './reducers/checkBoxReducer3'
@@ -9,9 +7,6 @@ export const store = configureStore({
     checkBoxReducer2,
     checkBoxReducer3,
     checkBoxReducer,
-    productSelected,
-    updateReducer,
-        
   },
 })
 

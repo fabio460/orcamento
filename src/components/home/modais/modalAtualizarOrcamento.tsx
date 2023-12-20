@@ -24,17 +24,25 @@ export default function ModalAtualizaOrcamento({id, idDoUsuario,nome, atualizar,
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false)
   const [Nome, setNome] = React.useState("")
+  const [nomeError, setNomeError] = React.useState(false)
+
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setNomeError(false)
     setOpen(false);
   };
 //   React.useEffect(()=>{
 //     setNome(nome)
 //   },[])
   const atualizarOrcamento = async()=>{
+    if (Nome === "".trim()) {
+      setNomeError(true)
+      return null
+    }
+    setNomeError(false)
     setLoading(true)
     await atualizarOrcamentoApi(id, idDoUsuario,Nome)
     setAtualizar(!atualizar)
@@ -55,7 +63,7 @@ export default function ModalAtualizaOrcamento({id, idDoUsuario,nome, atualizar,
         <DialogTitle>{"Atualizar orçamento"}</DialogTitle>
         <DialogContent >
           <DialogContentText sx={{p:"10px 0px"}} id="alert-dialog-slide-description" component={"div"}>
-            <TextField label="Nome" defaultValue={nome} onChange={e=>setNome(e.target.value)} fullWidth size='small'/>
+            <TextField error={nomeError} label={nomeError ? "Nome do orçamento" : "Orçamento inválido"} defaultValue={nome} onChange={e=>setNome(e.target.value)} fullWidth size='small'/>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
