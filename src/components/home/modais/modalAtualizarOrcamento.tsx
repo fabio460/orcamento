@@ -52,7 +52,7 @@ export default function ModalAtualizaOrcamento({id, idDoUsuario,nome, atualizar,
 
   return (
     <React.Fragment>
-      <Chip label={loading? <div style={{margin:"0px 50px"}}><IconeCarregando tam={20}/></div>: "Atualizar orçamento"} variant="outlined" onClick={handleClickOpen} />
+      <Chip sx={{margin:"30px 0px"}} label={loading? <div ><IconeCarregando tam={20}/></div>: "Atualizar orçamento"} variant="outlined" onClick={handleClickOpen} />
       <Dialog
         open={open}
         TransitionComponent={Transition}
