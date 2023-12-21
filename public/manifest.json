@@ -3,17 +3,17 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Fbr%2Ficone-gratis%2Forcamento_8134807&psig=AOvVaw3-sEJXscFLoovBUzo4gbYR&ust=1703209570081000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDZrae0n4MDFQAAAAAdAAAAABAE",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Fbr%2Ficone-gratis%2Forcamento_8134807&psig=AOvVaw3-sEJXscFLoovBUzo4gbYR&ust=1703209570081000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDZrae0n4MDFQAAAAAdAAAAABAE",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Fbr%2Ficone-gratis%2Forcamento_8134807&psig=AOvVaw3-sEJXscFLoovBUzo4gbYR&ust=1703209570081000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDZrae0n4MDFQAAAAAdAAAAABAE",
       "type": "image/png",
       "sizes": "512x512"
     }

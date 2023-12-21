@@ -21,7 +21,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ModalDeletarProduto({id, nome, atualizar, setAtualizar}:{id:string, nome:string, atualizar?:boolean, setAtualizar?:any}) {
+export default function ModalDeletarProduto({id, nome, atualizar, nomeDoOrcamento,setAtualizar}:{id:string, nomeDoOrcamento:string,nome:string, atualizar?:boolean, setAtualizar?:any}) {
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false)
 
@@ -43,7 +43,7 @@ export default function ModalDeletarProduto({id, nome, atualizar, setAtualizar}:
   return (
     <React.Fragment>
       <IconButton onClick={handleClickOpen}>
-        <DeleteOutlineIcon/>
+        <DeleteOutlineIcon color='primary'/>
       </IconButton>
       <Dialog
         open={open}
@@ -55,7 +55,7 @@ export default function ModalDeletarProduto({id, nome, atualizar, setAtualizar}:
         <DialogTitle>{"Deletar produto"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-               Deseja deletar o produto {nome} do seu orçamento?
+               Deseja deletar o produto {nome} do orçamento {nomeDoOrcamento}?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

@@ -31,7 +31,7 @@ export default function ModalDeletarOrcamento({id,nome, atualizar, setAtualizar}
   return (
     <React.Fragment>
       <IconButton  onClick={handleClickOpen}>
-        <DeleteForeverIcon/>
+        <DeleteForeverIcon color='error'/>
       </IconButton>
       <Dialog
         open={open}

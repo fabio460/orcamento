@@ -88,17 +88,17 @@ export default function HomeBody(
             {drawer}
           </Drawer>
         </nav>
-        <Box component="main" sx={{ p: 3, width:"100%" }}>
+        <Box component="main" className="BoxStyle">
           <Toolbar />
           <div className='homeContainer' >
               {
                 usuario?.orcamento?.map((e, key)=>{
                   return <div key={key} >
-                    <Stack direction="row" spacing={1} sx={{display:"flex", flexWrap:"wrap", width:"80vw", height:"80px"}}>
-                      <Chip sx={{margin:4}} label={e.nome} />
-                      <Chip sx={{margin:4}} label={getTotal(e.produto)} variant="outlined" />
+                    <Stack direction="row" spacing={1} className="headerHomeBody" sx={{display:"flex", flexWrap:"wrap", width:"80vw"}}>
+                      <Chip sx={{margin:1}} label={e.nome} />
+                      <Chip sx={{margin:1}} label={getTotal(e.produto)} variant="outlined" />
                       <ModalAtualizaOrcamento id={e.id} idDoUsuario={e.idDoUsuario} nome={e.nome} setAtualizar={setAtualizar} atualizar={atualizar}/>
-                      {e.id === idDoMaisBarato && <Chip sx={{margin:4}} label={"Mais barato"} variant="filled" color='success' />}
+                      {e.id === idDoMaisBarato && <Chip sx={{margin:1}} label={"Mais barato"} variant="filled" color='success' />}
                     </Stack>
                     <div className='listaDeProdutos'>
                       {
@@ -115,6 +115,7 @@ export default function HomeBody(
                                 idDoOrcamento={p.idDoOrcamento as string}
                                 selecionado={p?.selecionado as boolean}  
                                 dataDoPreco={p.dataDoPreco as string}
+                                nomeDoOrcamento={e.nome as string}
                               />
                           </div>
                         })

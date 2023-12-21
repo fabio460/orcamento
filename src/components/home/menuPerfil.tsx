@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -18,9 +17,6 @@ export default function MenuPerfil({deslogar, usuario, atualizar, setAtualizar}:
     setAnchorEl(null);
   };
 
-  const handleDeslogar = ()=>{
-
-  }
   return (
     <div>
       <IconButton
@@ -30,7 +26,7 @@ export default function MenuPerfil({deslogar, usuario, atualizar, setAtualizar}:
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <SettingsIcon/>
+        <SettingsIcon sx={{color:"white"}}/>
       </IconButton>
       <Menu
         id="basic-menu"

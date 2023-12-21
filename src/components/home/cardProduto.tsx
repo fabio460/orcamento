@@ -12,8 +12,8 @@ import ModalDeletarProduto from './modais/modalDeletarProduto';
 
 
 export default function CardProduto(
-  {id,nome, loja, marca, dataDoPreco,valor, idDoOrcamento, endeerecoDaLoja, atualizar, setAtualizar, selecionado}
-   :{id:string,nome:string, loja:string, valor:number, marca:string, dataDoPreco:string,idDoOrcamento:string, endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean, selecionado:boolean}) {
+  {id,nome, loja, marca, dataDoPreco,valor, idDoOrcamento, nomeDoOrcamento,endeerecoDaLoja, atualizar, setAtualizar, selecionado}
+   :{id:string,nome:string, loja:string, valor:number, marca:string, nomeDoOrcamento:string,dataDoPreco:string,idDoOrcamento:string, endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean, selecionado:boolean}) {
   const [loading, setLoading] = React.useState(false)
   
   const handleChecked = async(e:any)=>{
@@ -25,14 +25,14 @@ export default function CardProduto(
     }, 700);
   }  
   return (
-    <Card sx={{ width: 175, m:1, minHeight:300 }}>
+    <Card sx={{ width: 175, m:"10px 10px 10px 0px", minHeight:300 }}>
       <div style={{display:"flex", justifyContent:"space-between"}}>
         {
           loading ? 
           <div style={{padding:"11px"}}><IconeCarregando tam={20}/></div>:
           <Checkbox checked={(selecionado === null || selecionado === false) ? false:true} onChange={handleChecked}/>
         }
-        <ModalDeletarProduto id={id} nome={nome} atualizar={atualizar} setAtualizar={setAtualizar}/>
+        <ModalDeletarProduto id={id} nome={nome} atualizar={atualizar} setAtualizar={setAtualizar} nomeDoOrcamento={nomeDoOrcamento}/>
       </div>
       <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"250px"}}>
 

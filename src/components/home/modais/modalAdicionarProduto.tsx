@@ -43,7 +43,7 @@ export default function ModalAdicionarProduto({id, atualizar, setAtualizar, nome
   }
   return (
     <React.Fragment>
-      <IconButton onClick={handleClickOpen} ><ControlPointIcon/></IconButton>
+      <IconButton onClick={handleClickOpen} ><ControlPointIcon color='success'/></IconButton>
       <Dialog
         open={open}
         onClose={handleClose}
