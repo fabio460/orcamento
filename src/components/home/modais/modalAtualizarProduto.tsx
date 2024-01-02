@@ -81,7 +81,7 @@ export default function ModalAtualizarProduto(
                sx={{mb:1}}
              />
              <TextField 
-               label="Loja" 
+               label="Link do site" 
                variant="outlined"
                size='small'
                fullWidth
@@ -94,7 +94,7 @@ export default function ModalAtualizarProduto(
                variant="outlined"
                size='small'
                fullWidth
-               defaultValue={loja}
+               defaultValue={endeerecoDaLoja}
                onChange={e=> setEndereco(e.target.value)}
                sx={{mb:1}}
              />

@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ModalAtualizarProduto from './modais/modalAtualizarProduto';
 import { dataFormatada, dataFormatada2, formatoMonetario } from '../uteis';
-import { Checkbox } from '@mui/material';
+import { Checkbox, Link } from '@mui/material';
 import { atualizarProdutoApi, atualizarSelecionadoProdutoApi } from '../../Api/produtoApi';
 import IconeCarregando from '../iconeCarregando';
 import ModalDeletarProduto from './modais/modalDeletarProduto';
@@ -39,26 +39,24 @@ export default function CardProduto(
       <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"290px"}}>
 
         <CardContent>
-          <Typography variant="body2">
+          <Typography variant="body1">
             {nome}
           </Typography>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {marca}
           </Typography>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {loja}
-          </Typography>
-          <Typography sx={{ fontSize: 11 }} color="text.secondary" gutterBottom>
             {dataFormatada(dataDoPreco)}
           </Typography>
-          <Typography variant="h5" component="div">
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <Typography sx={{ fontSize: 14  }} color="text.secondary">
             {formatoMonetario(valor)}
           </Typography>
         </CardContent>
         <CardActions sx={{pt:"auto", display:"block"}}>
           <div>
+            <Typography sx={{ fontSize: 14, textAlign:"center",mb:2 }} color="text.secondary" gutterBottom>
+              <Link sx={{textDecoration:"none"}} href={loja}>Ir para o site</Link>
+            </Typography>
             <ModalAtualizarProduto
               nome={nome}
               loja={loja} 
