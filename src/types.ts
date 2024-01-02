@@ -21,6 +21,13 @@ export type orcamentoType = {
     precoTotal: number
 }
 
+export type historicoDeDatasDosProdutosType = {
+   id:string,
+   datas:string
+   idDoProduto:string
+   preco: number
+}
+
 export type produtoType = {
     id? :string
     nome? :string
@@ -31,6 +38,7 @@ export type produtoType = {
     endeerecoDaLoja? :string
     idDoOrcamento? :string 
     selecionado? :boolean
+    historicoDeDatasDosProdutos: historicoDeDatasDosProdutosType[]
 }
 
 export type routerType={

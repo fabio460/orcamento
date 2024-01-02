@@ -116,6 +116,7 @@ export default function HomeBody(
                                 selecionado={p?.selecionado as boolean}  
                                 dataDoPreco={p.dataDoPreco as string}
                                 nomeDoOrcamento={e.nome as string}
+                                historico={p.historicoDeDatasDosProdutos}
                               />
                           </div>
                         })

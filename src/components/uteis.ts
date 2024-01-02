@@ -17,6 +17,14 @@ export const dataFormatada = (dataBruta:string)=>{
    const ano = data.split("-")[0]
    return dia+"/"+mes+"/"+ano
 }
+export const dataFormatada2 = (dataBruta:string)=>{
+   const dia = dataBruta.split(" ")[2]
+   const ano = dataBruta.split(" ")[3]
+   const mes = dataBruta.split(" ")[1]
+
+   return dia +"/"+mes+"/"+ano
+}
+
 
 export const getMaisCaro = (orc:orcamentoType[])=>{
    let arr:any = orc?.map(e=>{

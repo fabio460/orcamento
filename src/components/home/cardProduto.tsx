@@ -4,16 +4,18 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ModalAtualizarProduto from './modais/modalAtualizarProduto';
-import { dataFormatada, formatoMonetario } from '../uteis';
+import { dataFormatada, dataFormatada2, formatoMonetario } from '../uteis';
 import { Checkbox } from '@mui/material';
 import { atualizarProdutoApi, atualizarSelecionadoProdutoApi } from '../../Api/produtoApi';
 import IconeCarregando from '../iconeCarregando';
 import ModalDeletarProduto from './modais/modalDeletarProduto';
+import { historicoDeDatasDosProdutosType } from '../../types';
+import ModalDetalhesDoProduto from './modais/modalDetalhes';
 
 
 export default function CardProduto(
-  {id,nome, loja, marca, dataDoPreco,valor, idDoOrcamento, nomeDoOrcamento,endeerecoDaLoja, atualizar, setAtualizar, selecionado}
-   :{id:string,nome:string, loja:string, valor:number, marca:string, nomeDoOrcamento:string,dataDoPreco:string,idDoOrcamento:string, endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean, selecionado:boolean}) {
+  {id,nome, loja, marca, dataDoPreco,valor, idDoOrcamento, nomeDoOrcamento,endeerecoDaLoja, atualizar, historico,setAtualizar, selecionado}
+   :{id:string,nome:string, loja:string, valor:number, marca:string, nomeDoOrcamento:string,dataDoPreco:string,idDoOrcamento:string,endeerecoDaLoja:string,setAtualizar:any, atualizar:boolean, selecionado:boolean, historico:historicoDeDatasDosProdutosType[]}) {
   const [loading, setLoading] = React.useState(false)
   
   const handleChecked = async(e:any)=>{
@@ -34,7 +36,7 @@ export default function CardProduto(
         }
         <ModalDeletarProduto id={id} nome={nome} atualizar={atualizar} setAtualizar={setAtualizar} nomeDoOrcamento={nomeDoOrcamento}/>
       </div>
-      <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"250px"}}>
+      <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"290px"}}>
 
         <CardContent>
           <Typography variant="body2">
@@ -55,17 +57,20 @@ export default function CardProduto(
             {formatoMonetario(valor)}
           </Typography>
         </CardContent>
-        <CardActions sx={{pt:"auto"}}>
-          <ModalAtualizarProduto
-            nome={nome}
-            loja={loja} 
-            marca={marca} 
-            valor={valor} 
-            idDoOrcamento={idDoOrcamento}
-            endeerecoDaLoja={endeerecoDaLoja}
-            setAtualizar={setAtualizar} atualizar={atualizar as boolean}
-            id={id}
-          />
+        <CardActions sx={{pt:"auto", display:"block"}}>
+          <div>
+            <ModalAtualizarProduto
+              nome={nome}
+              loja={loja} 
+              marca={marca} 
+              valor={valor} 
+              idDoOrcamento={idDoOrcamento}
+              endeerecoDaLoja={endeerecoDaLoja}
+              setAtualizar={setAtualizar} atualizar={atualizar as boolean}
+              id={id}
+            />
+            <ModalDetalhesDoProduto historico={historico as historicoDeDatasDosProdutosType[]}/>
+          </div>
         </CardActions>
       </div>
     </Card>

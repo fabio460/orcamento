@@ -43,8 +43,6 @@ export default function Home() {
     window.location.reload()
   }
 
-
-
   
   if (loading) {
     return <ThemeProvider theme={dark ? darkTheme:{}}>
