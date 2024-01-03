@@ -20,7 +20,7 @@ export const dataFormatada = (dataBruta:string)=>{
 export const dataFormatada2 = (dataBruta:string)=>{
    const dia = dataBruta.split(" ")[2]
    const ano = dataBruta.split(" ")[3]
-   const mes = traduzMes(dataBruta.split("")[1])
+   const mes = traduzMes(dataBruta.split(" ")[1])
    
    
    return dia +"/"+mes+"/"+ano
@@ -49,7 +49,6 @@ function traduzMes(mes:string) {
       case "July":
          return "07"
          break;
-             
       case "Aug":
          return "08"
          break;   
@@ -62,8 +61,11 @@ function traduzMes(mes:string) {
       case "Nov":
          return "11"
          break;
-      default:
+      case "Dec":
          return "12"
+         break;   
+      default:
+         return ""
          break;
    }   
 }
