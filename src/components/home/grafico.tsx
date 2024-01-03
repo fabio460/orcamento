@@ -10,7 +10,7 @@ import {
 } from '@devexpress/dx-react-chart-material-ui';
 import { EventTracker } from '@devexpress/dx-react-chart';
 import { historicoDeDatasDosProdutosType } from '../../types';
-import { dataFormatada2, formatoMonetario } from '../uteis';
+import { dataFormatada, dataFormatada2, formatoMonetario } from '../uteis';
 
 const data = [
   { year: '1950', population: 2.525 },
@@ -27,7 +27,7 @@ const data = [
   { year: '2023', population: 6.930 },
 ];
 
-export default function Grafico({historico}:{historico:historicoDeDatasDosProdutosType[]}){
+export default function Grafico({historico, dadaDoPreco, valor}:{dadaDoPreco:string, valor:number,historico:historicoDeDatasDosProdutosType[]}){
 
     //const { data: chartData } = this.state;
     const datas = historico.map(f=>{
@@ -35,6 +35,10 @@ export default function Grafico({historico}:{historico:historicoDeDatasDosProdut
         datas:dataFormatada2(f.datas),
         preco:formatoMonetario(f.preco)
       }
+    })
+    datas.push({
+      datas:dataFormatada(dadaDoPreco),
+      preco:formatoMonetario(valor)
     })
     return (
       <Paper>

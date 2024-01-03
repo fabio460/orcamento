@@ -20,11 +20,53 @@ export const dataFormatada = (dataBruta:string)=>{
 export const dataFormatada2 = (dataBruta:string)=>{
    const dia = dataBruta.split(" ")[2]
    const ano = dataBruta.split(" ")[3]
-   const mes = dataBruta.split(" ")[1]
-
+   const mes = traduzMes(dataBruta.split("")[1])
+   
+   
    return dia +"/"+mes+"/"+ano
 }
 
+function traduzMes(mes:string) {
+   switch (mes) {
+      case "Jan": 
+         return "01"
+         break;
+      case "Feb":
+         return "02"
+         break;   
+      case "Mar":
+         return "03"
+         break;
+      case "Apr":
+         return "04"
+         break;
+      case "May":
+         return "05"
+         break;
+      case "June":
+         return "06"
+         break;
+      case "July":
+         return "07"
+         break;
+             
+      case "Aug":
+         return "08"
+         break;   
+      case "Sept":
+         return "09"
+         break;
+      case "Oct":
+         return "10"
+         break;
+      case "Nov":
+         return "11"
+         break;
+      default:
+         return "12"
+         break;
+   }   
+}
 
 export const getMaisCaro = (orc:orcamentoType[])=>{
    let arr:any = orc?.map(e=>{

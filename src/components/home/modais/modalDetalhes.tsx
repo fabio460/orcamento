@@ -21,7 +21,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function ModalDetalhesDoProduto({historico}:{historico:historicoDeDatasDosProdutosType[]}) {
+export default function ModalDetalhesDoProduto({historico, dadaDoPreco, valor}:{dadaDoPreco:string, valor:number,historico:historicoDeDatasDosProdutosType[]}) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -42,7 +42,11 @@ export default function ModalDetalhesDoProduto({historico}:{historico:historicoD
         open={open}
       >
         <DialogContent dividers className='graficoBody'>
-           <Grafico historico={historico as historicoDeDatasDosProdutosType[]}/>
+           <Grafico 
+              historico={historico as historicoDeDatasDosProdutosType[]}
+              dadaDoPreco={dadaDoPreco as string}
+              valor={valor as number}
+           />
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>

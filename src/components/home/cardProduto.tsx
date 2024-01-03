@@ -67,7 +67,11 @@ export default function CardProduto(
               setAtualizar={setAtualizar} atualizar={atualizar as boolean}
               id={id}
             />
-            <ModalDetalhesDoProduto historico={historico as historicoDeDatasDosProdutosType[]}/>
+            <ModalDetalhesDoProduto 
+              historico={historico as historicoDeDatasDosProdutosType[]}
+              dadaDoPreco={dataDoPreco as string}
+              valor={valor as number}
+            />
           </div>
         </CardActions>
       </div>
