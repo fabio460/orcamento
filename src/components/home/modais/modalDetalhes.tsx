@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import { historicoDeDatasDosProdutosType } from '../../../types';
 import { dataFormatada2, formatoMonetario } from '../../uteis';
 import Grafico from '../grafico';
+import Grafico2 from '../grafico2';
+import Grafico3 from '../grafico3';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -43,6 +45,16 @@ export default function ModalDetalhesDoProduto({historico, dadaDoPreco, valor}:{
       >
         <DialogContent dividers className='graficoBody'>
            <Grafico 
+              historico={historico as historicoDeDatasDosProdutosType[]}
+              dadaDoPreco={dadaDoPreco as string}
+              valor={valor as number}
+           />
+           <Grafico2
+              historico={historico as historicoDeDatasDosProdutosType[]}
+              dadaDoPreco={dadaDoPreco as string}
+              valor={valor as number}
+           />
+           <Grafico3 
               historico={historico as historicoDeDatasDosProdutosType[]}
               dadaDoPreco={dadaDoPreco as string}
               valor={valor as number}

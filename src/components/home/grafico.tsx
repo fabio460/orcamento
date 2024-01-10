@@ -13,18 +13,18 @@ import { historicoDeDatasDosProdutosType } from '../../types';
 import { dataFormatada, dataFormatada2, formatoMonetario } from '../uteis';
 
 const data = [
-  { year: '1950', population: 2.525 },
-  { year: '1960', population: 3.018 },
-  { year: '1970', population: 3.682 },
-  { year: '1980', population: 4.440 },
-  { year: '1990', population: 5.310 },
-  { year: '2000', population: 6.127 },
-  { year: '2010', population: 6.930 },
-  { year: '1970', population: 3.682 },
-  { year: '1980', population: 4.440 },
-  { year: '1990', population: 5.310 },
-  { year: '2000', population: 6.127 },
-  { year: '2023', population: 6.930 },
+  { datas: '1950', preco: 2.525 },
+  { datas: '1960', preco: 3.018 },
+  { datas: '1970', preco: 3.682 },
+  { datas: '1980', preco: 4.440 },
+  { datas: '1990', preco: 5.310 },
+  { datas: '2000', preco: 2.127 },
+  { datas: '2010', preco: 6.930 },
+  { datas: '1970', preco: 3.682 },
+  { datas: '1980', preco: 4.440 },
+  { datas: '1990', preco: 5.310 },
+  { datas: '2000', preco: 1.127 },
+  { datas: '2023', preco: 2.930 },
 ];
 
 export default function Grafico({historico, dadaDoPreco, valor}:{dadaDoPreco:string, valor:number,historico:historicoDeDatasDosProdutosType[]}){
@@ -33,17 +33,21 @@ export default function Grafico({historico, dadaDoPreco, valor}:{dadaDoPreco:str
     const datas = historico.map(f=>{
       return {
         datas:dataFormatada2(f.datas),
-        preco:formatoMonetario(f.preco)
+        preco:f.preco
       }
     })
     datas.push({
       datas:dataFormatada(dadaDoPreco),
-      preco:formatoMonetario(valor)
+      preco:valor
     })
+    // console.log(datas.sort((a,b)=>{
+    //   return a.preco > b.preco ? 1 : a.preco < b.preco ? -1 : 0
+    // }))
     return (
       <Paper>
         <Chart
           data={datas}
+          height={350}
         >
           <ArgumentAxis />
           <ValueAxis />
